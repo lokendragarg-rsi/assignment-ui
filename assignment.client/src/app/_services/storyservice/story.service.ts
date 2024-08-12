@@ -14,7 +14,7 @@ export interface StoryItemDetails {
 export class StoryService {
   apiUrl = '';
   constructor(private http: HttpClient) {
-    this.apiUrl = 'https://localhost:7259/api/Story/';
+    this.apiUrl = 'http://localhost:5021/api/Story/';
   }
 
   getDetail(takeRecord: number) {

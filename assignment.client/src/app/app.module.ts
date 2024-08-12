@@ -8,11 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoryService } from './_services/storyservice/story.service';
 import { MaterialModule } from './material.module';
-
+import { StoryComponent } from './story/story.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StoryComponent
   ],
   imports: [
     BrowserModule,
