@@ -33,24 +33,16 @@ export class StoryComponent implements OnInit {
   getStoryDetails() {
     this.loading = true;
     this.storyService.getDetail(200).pipe(first()).subscribe(result => {
-      if (result.isSuccess) {
-        result.data.forEach((currentData, index) => {
-          this.ELEMENT_DATA.push({
-            position: index + 1,
-            title: currentData.title,
-            url: currentData.url
-          });
+      result.forEach((currentData, index) => {
+        this.ELEMENT_DATA.push({
+          position: index + 1,
+          title: currentData.title,
+          url: currentData.url
         });
-        this.dataSource = new MatTableDataSource<StoryTableElement>(this.ELEMENT_DATA);
-        this.dataSource.paginator = this.paginator;
-        this.loading = false;
-      }
-      else {
-        this.loading = false;
-        this.ELEMENT_DATA = [];
-        this.dataSource = new MatTableDataSource<StoryTableElement>(this.ELEMENT_DATA);
-        this.dataSource.paginator = this.paginator;
-      }
+      });
+      this.dataSource = new MatTableDataSource<StoryTableElement>(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
+      this.loading = false;
     }, (err) => {
       this.loading = false;
     });

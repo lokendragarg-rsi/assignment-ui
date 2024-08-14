@@ -5,6 +5,7 @@ import { HarnessLoader } from '@angular/cdk/testing';
 import { By } from '@angular/platform-browser';
 import { StoryComponent } from './story.component';
 import { MaterialModule } from '../material.module';
+import { environment } from '../_model/environment';
 
 describe('StoryComponent', () => {
   let component: StoryComponent;
@@ -39,7 +40,7 @@ describe('StoryComponent', () => {
     ];
 
     component.ngOnInit();
-    const req = httpMock.expectOne('http://localhost:5021/api/Story/getstorydetails?takeRecord=200');
+    const req = httpMock.expectOne(environment.baseUrl + 'api/Story/getstorydetails?takeRecord=200');
     expect(req.request.method).toEqual('GET');
     req.flush(mockStories);
     expect(mockStories.length).toEqual(2);
